@@ -1,0 +1,15 @@
+db:
+  default: &default
+    username: root
+    password: root
+
+  test:
+    <<: *default
+    name: good_night_test
+  development:
+    <<: *default
+    name: good_night_development
+  production:
+    username: username
+    password: password
+    name: good_night_production
