@@ -17,14 +17,14 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'dotenv-rails'
+  gem 'rubocop', '~> 1.9', require: false
+  gem 'rubocop-performance', '~> 1.9.0'
+  gem 'rubocop-rspec', '~> 2.0.0'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
-  gem 'rubocop', '~> 1.9', require: false
-  gem 'rubocop-performance', '~> 1.9.0'
-  gem 'rubocop-rspec', '~> 2.0.0'
 end
 
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
