@@ -141,3 +141,6 @@ RSpec/StubbedMock:
 InternalAffairs/ExampleDescription:
   Include:
     - 'spec/rubocop/cop/**/*.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
