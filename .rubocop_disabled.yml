@@ -13,3 +13,12 @@ Style/MethodDefParentheses:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+RSpec/ImplicitExpect:
+  Enabled: false
+
+RSpec/PredicateMatcher:
+  Enabled: false
