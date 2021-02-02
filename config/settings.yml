@@ -1,0 +1,4 @@
+auth:
+  token:
+    length: 20
+    expires_in: <%= 1.day %>

@@ -13,9 +13,14 @@ gem "rack-cors"
 gem "rails", "~> 6.1.1"
 
 group :development, :test do
+  gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
+  gem "factory_bot_rails"
+  gem "faker"
   gem "pry-byebug"
+  gem "rspec"
+  gem "rspec-collection_matchers"
   gem "rspec-rails"
   gem "rubocop", "~> 1.9", require: false
   gem "rubocop-performance", "~> 1.9.0"
@@ -25,6 +30,11 @@ end
 group :development do
   gem "listen", "~> 3.3"
   gem "spring"
+end
+
+group :test do
+  gem "database_cleaner"
+  gem "shoulda-matchers", "~> 4.0"
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
