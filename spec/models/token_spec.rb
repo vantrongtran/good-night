@@ -2,15 +2,15 @@ require "rails_helper"
 
 RSpec.describe Token, type: :model do
   describe "associations" do
-    it { is_expected.to belong_to :user }
+    it { should belong_to :user }
   end
 
   describe "validations" do
     subject { create :token }
 
-    it { is_expected.to validate_uniqueness_of(:token).case_insensitive }
-    it { is_expected.to validate_presence_of :user }
-    it { is_expected.to validate_presence_of :expires_at }
+    it { should validate_uniqueness_of(:token).case_insensitive }
+    it { should validate_presence_of :user }
+    it { should validate_presence_of :expires_at }
   end
 
   describe "#expired?" do
@@ -19,13 +19,13 @@ RSpec.describe Token, type: :model do
     context "with return true if token expired" do
       let(:token) { create :token, expires_at: Time.zone.now }
 
-      it { is_expected.to be_truthy }
+      it { should be_truthy }
     end
 
     context "with return false if token expired" do
       let(:token) { create :token, expires_at: 1.minute.from_now }
 
-      it { is_expected.to be_falsey }
+      it { should be_falsey }
     end
   end
 
