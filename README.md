@@ -1,41 +1,54 @@
-# Good Night
+# GoodNight
 
-The API server is written with Rails
+## Prerequisites
 
-# New Features!
+You need to install all of this before moving to next step.
 
-  - Auto define and permit params in API controller
+* [Git](http://git-scm.com/)
+* [Docker](https://www.docker.com/)
 
-### Tech
-* [Rails] - Web framework
+## Installation
 
-### Installation
-
-##### Install ruby and rails on your local development follow below links
-
-* [MacOS]
-* [Ubuntu]
-* [Window]
-
-##### Install Gems
-```sh
-$ cd good-night
-$ bundle install
-```
-##### Config your local DB
-```sh
-$ cp config/settings.local.yml.example config/settings.local.yml
-```
-##### And run your app
-```sh
-$ rails s
+```bash
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose run app db:create db:migrate
 ```
 
-### Development
+## Environment
 
-Want to contribute? Great!
+DB_NAME
+DB_PORT
+DB_USERNAME
+DB_PASSWORD
+DB_HOST_NAME
 
-   [Rails]: <http://angularjs.org>
-   [Ubuntu]: <https://gorails.com/setup/ubuntu/20.10>
-   [MacOs]: <https://gorails.com/setup/osx/11.0-big-sur>
-   [Window]: <https://gorails.com/setup/windows/10>
+And then, API server should be running on your [http://localhost:3000](http://localhost:3000)
+
+**IMPORTANT!**
+
+In case of you want to use rails, rails command without docker or run RSpec. Setup local environment variable.
+You can also keep any sensitive information here.
+
+## Login to server
+```bash
+$ docker-compose exec app bash -it
+```
+
+## Debugger/Rails log
+```bash
+$ docker attach good-night_app_1
+```
+
+## Master Data
+
+Login to server and running following command:
+```bash
+$ docker-compose run app rails db:migrate
+$ docker-compose run app rails db:seed
+```
+## Run rspec, rubocop before push code
+```bash
+$ docker-compose run app rubocop
+$ docker-compose run app rspec
+```
