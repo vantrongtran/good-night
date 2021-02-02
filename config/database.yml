@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Settings.db.default.username %>
-  password: <%= Settings.db.default.password %>
+  username: <%= ENV.fetch("DB_USERNAME", "root") %>
+  password: <%= ENV["DB_PASSWORD"] %>
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: <%= Settings.db.development.name %>
+  database: good_night_development
 
 test:
   <<: *default
-  database: <%= Settings.db.test.name %>
+  database: good_night_test
 
 production:
   <<: *default
-  database: <%= Settings.db.production.name %>
-  username: <%= Settings.db.production.username %>
-  password: <%= Settings.db.production.password %>
+  database: <%= ENV["PROD_DB_NAME"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>

@@ -1,0 +1,15 @@
+# These are all the cops that are disabled in the default configuration.
+Style/MutableConstant:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodDefParentheses:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
