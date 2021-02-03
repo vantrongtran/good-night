@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :tokens, dependent: :destroy
+  has_many :daily_sleeping_times, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true

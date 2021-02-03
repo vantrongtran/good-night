@@ -4,3 +4,8 @@ auth:
     header_key: "Authorization"
     length: 20
     expires_in: <%= 1.day %>
+sleeping_time:
+  min: <%= 1.hour %>
+  max: <%= 12.hours %>
+pagination:
+  sleeping_time_items: 10

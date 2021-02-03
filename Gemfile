@@ -8,6 +8,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "config"
 gem "mysql2", "~> 0.5"
+gem "pagy"
 gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails", "~> 6.1.1"

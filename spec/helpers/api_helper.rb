@@ -22,4 +22,11 @@ module ApiHelper
   def expect_http_status http_status
     expect(response).to have_http_status(http_status)
   end
+
+  def auth_header access_token
+    {
+      CONTENT_TYPE: "application/json",
+      "#{Settings.auth.token.header_key}": "#{Settings.auth.token.header_prefix} #{access_token}"
+    }
+  end
 end

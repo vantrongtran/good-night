@@ -22,3 +22,10 @@ RSpec/ImplicitExpect:
 
 RSpec/PredicateMatcher:
   Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
+
