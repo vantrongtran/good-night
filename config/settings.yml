@@ -1,4 +1,6 @@
 auth:
   token:
+    header_prefix: "Bearer"
+    header_key: "Authorization"
     length: 20
     expires_in: <%= 1.day %>
