@@ -7,7 +7,15 @@ module Api
       end
     end
 
-    class WrongUsernamePassword < Base
+    class Unauthenticated < Base
+      @@status = :unauthorized
+    end
+
+    class WrongUsernamePassword < Unauthenticated
+      @@status = :unauthorized
+    end
+
+    class TokenExpired < Unauthenticated
       @@status = :unauthorized
     end
   end

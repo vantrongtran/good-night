@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "#self.authenticate!" do
-    subject { described_class.authenticate!(username: username, password: password) }
+    subject(:user) { described_class.authenticate!(username: username, password: password) }
 
     let!(:correct_user) { create :user }
 
@@ -24,6 +24,20 @@ RSpec.describe User, type: :model do
       let(:password) { correct_user.password }
 
       it { should eq correct_user }
+    end
+
+    context "with incorec username" do
+      let(:username) { "#{correct_user.username}x" }
+      let(:password) { correct_user.password }
+
+      it { expect { user }.to raise_error Api::Error::WrongUsernamePassword }
+    end
+
+    context "with incorec password" do
+      let(:username) { correct_user.username }
+      let(:password) { "#{correct_user.password}x" }
+
+      it { expect { user }.to raise_error Api::Error::WrongUsernamePassword }
     end
   end
 end
