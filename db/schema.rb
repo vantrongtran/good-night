@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_092243) do
+ActiveRecord::Schema.define(version: 2021_02_03_042844) do
+
+  create_table "daily_sleeping_times", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "date", null: false
+    t.datetime "bed_time", null: false
+    t.datetime "wake_up_time"
+    t.integer "sleeping_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_daily_sleeping_times_on_user_id"
+  end
 
   create_table "tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -30,5 +41,6 @@ ActiveRecord::Schema.define(version: 2021_02_02_092243) do
     t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "daily_sleeping_times", "users"
   add_foreign_key "tokens", "users"
 end
