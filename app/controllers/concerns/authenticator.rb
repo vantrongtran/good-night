@@ -10,8 +10,6 @@ module Authenticator
   def authenticate!
     @current_user = current_token&.user
     raise Api::Error::Unauthenticated unless current_user
-  rescue StandardError => e
-    error_handle e
   end
 
   def token_on_header
