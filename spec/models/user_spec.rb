@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   describe "associations" do
     it { should have_many(:tokens).dependent(:destroy) }
+    it { should have_many(:followings).dependent(:destroy) }
+    it { should have_many(:following_users).through(:followings).source(:following_user) }
+    it { should have_many(:followers).with_foreign_key("following_user_id").class_name("Following").dependent(:destroy) } # rubocop:disable Layout/LineLength
+    it { should have_many(:follower_users).through(:followers).source(:user) }
   end
 
   describe "validations" do

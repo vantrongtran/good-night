@@ -9,3 +9,4 @@ sleeping_time:
   max: <%= 12.hours %>
 pagination:
   sleeping_time_items: 10
+  following_items: 10

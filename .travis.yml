@@ -10,6 +10,7 @@ env:
 script:
   - bundle install
   - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec bundler-audit check --update
   - bundle exec rubocop
   - bundle exec rspec
 before_script:
