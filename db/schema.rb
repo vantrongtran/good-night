@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_042844) do
+ActiveRecord::Schema.define(version: 2021_02_05_030544) do
 
-  create_table "daily_sleeping_times", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "daily_sleeping_times", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "date", null: false
     t.datetime "bed_time", null: false
@@ -23,7 +23,17 @@ ActiveRecord::Schema.define(version: 2021_02_03_042844) do
     t.index ["user_id"], name: "index_daily_sleeping_times_on_user_id"
   end
 
-  create_table "tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "followings", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "following_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["following_user_id"], name: "fk_rails_6d127b6f29"
+    t.index ["user_id", "following_user_id"], name: "index_followings_on_user_id_and_following_user_id", unique: true
+    t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+  create_table "tokens", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "token", null: false
     t.datetime "expires_at", null: false
@@ -33,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_042844) do
     t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
@@ -42,5 +52,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_042844) do
   end
 
   add_foreign_key "daily_sleeping_times", "users"
+  add_foreign_key "followings", "users"
+  add_foreign_key "followings", "users", column: "following_user_id"
   add_foreign_key "tokens", "users"
 end

@@ -14,7 +14,9 @@ gem "rack-cors"
 gem "rails", "~> 6.1.1"
 
 group :development, :test do
+  gem "brakeman"
   gem "bullet"
+  gem "bundler-audit", require: false
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
   gem "factory_bot_rails"
